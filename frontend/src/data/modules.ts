@@ -244,6 +244,17 @@ export const MODULES: ModuleMeta[] = [
     actionTargets: {"发起审计": "审计中", "确认通过": "已通过", "指派整改": "整改中"},
     metrics: ["记录总数", "已通过记录", "整改中记录"],
   },
+  {
+    key: "train_pack",
+    name: "训练分包",
+    entity: "训练分区包",
+    desc: "把特征存储的日期分区快照导出为不可变训练分区数据包，索引注明管道、分区、来源版次与行数。",
+    fields: ["包编号", "管道编号", "训练批次", "日期分区", "来源版次", "行数", "压缩方式", "签发时间"],
+    statuses: ["已签发", "已交付", "已作废"],
+    actions: ["确认交付", "重试打包"],
+    actionTargets: {"确认交付": "已交付", "重试打包": "已签发"},
+    metrics: ["数据包总数", "已交付包", "已作废包"],
+  },
 ]
 
 export const MODULE_BY_KEY: Map<string, ModuleMeta> = new Map(

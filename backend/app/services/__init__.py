@@ -24,6 +24,7 @@ from app.services.batch_load import BatchLoadService
 from app.services.report_task import ReportTaskService
 from app.services.schedule_job import ScheduleJobService
 from app.services.govern_audit import GovernAuditService
+from app.services.train_pack import TrainPackService
 
 SERVICES: dict[str, BaseModuleService] = {
     "feature_reg": FeatureRegService(),
@@ -48,6 +49,7 @@ SERVICES: dict[str, BaseModuleService] = {
     "report_task": ReportTaskService(),
     "schedule_job": ScheduleJobService(),
     "govern_audit": GovernAuditService(),
+    "train_pack": TrainPackService(),
 }
 
 

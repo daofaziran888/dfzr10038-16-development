@@ -72,6 +72,7 @@ npm run dev
 | 特征报告 | `report_task` | 分析报表 | 报告编号、报告类型、特征范围 |
 | 调度编排 | `schedule_job` | 调度计划 | 计划编号、任务类型、关联对象 |
 | 治理审计 | `govern_audit` | 审计记录 | 记录编号、审计对象、审计类型 |
+| 训练分包 | `train_pack` | 训练分区包 | 包编号、训练批次、日期分区、来源版次 |
 
 ## 约定
 
@@ -80,6 +81,10 @@ npm run dev
   `frontend/src/domain/<模块>.ts`，用于承载真实业务差异并维持36题位容量。
 - 列表接口统一返回 `{ items, total, page, size }`，动作接口统一返回 `{ ok, message }`。
 - 状态流转只允许在 `app/services` 里改，路由层不做业务判断。
+- 训练分包（`train_pack`）除通用清单外，另有能力接口 `/api/train-pack/*`：
+  分区接入/更正/快照、按训练批导出、索引与下载、回执、存储清单、补算版次核对。
+  编码与压缩沿用 `offline_exp` 登记的管道配置；已签发的包不可变，更正只签发新包。
+  场景验证：`cd backend && .venv/bin/python tests/train_pack_scenario.py`。
 
 领域：数据工程
 子方向：数仓与数据湖
